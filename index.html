@@ -1,0 +1,164 @@
+<section class="sponsors" aria-label="Sponsors">
+  <div class="sponsors__container">
+    <header class="sponsors__header">
+      <h2 class="sponsors__title">Sponsors</h2>
+      <p class="sponsors__subtitle">
+        We sincerely thank our sponsors for their trust, support, and continued partnership.
+      </p>
+    </header>
+
+    <!-- Vertical looping carousel -->
+    <div class="sponsors__viewport">
+      <div class="sponsors__track">
+
+        <!-- SET A -->
+        <div class="sponsors__logo"><img src="images/1.png" alt="Sponsor 1"></div>
+        <div class="sponsors__logo"><img src="images/2.png" alt="Sponsor 2"></div>
+        <div class="sponsors__logo"><img src="images/3.png" alt="Sponsor 3"></div>
+        <div class="sponsors__logo"><img src="images/4.png" alt="Sponsor 4"></div>
+
+        <!-- SET B (duplicate for infinite loop) -->
+        <div class="sponsors__logo"><img src="images/1.png" alt=""></div>
+        <div class="sponsors__logo"><img src="images/2.png" alt=""></div>
+        <div class="sponsors__logo"><img src="images/3.png" alt=""></div>
+        <div class="sponsors__logo"><img src="images/4.png" alt=""></div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border: #e5e7eb;
+  }
+
+  /* Section */
+  .sponsors {
+    background: var(--bg);
+    padding: clamp(3rem, 6vw, 5rem) 1rem;
+  }
+
+  .sponsors__container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .sponsors__header {
+    text-align: center;
+    margin-bottom: 2.75rem;
+  }
+
+  .sponsors__title {
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-main);
+  }
+
+  .sponsors__subtitle {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    max-width: 60ch;
+    margin-inline: auto;
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+
+  /* Viewport */
+  .sponsors__viewport {
+    position: relative;
+    height: clamp(100%, 65vh, 100%);
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    background: #fff;
+  }
+
+  /* Fade edges */
+  .sponsors__viewport::before,
+  .sponsors__viewport::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 72px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .sponsors__viewport::before {
+    top: 0;
+    background: linear-gradient(to bottom, #fff, rgba(255,255,255,0));
+  }
+
+  .sponsors__viewport::after {
+    bottom: 0;
+    background: linear-gradient(to top, #fff, rgba(255,255,255,0));
+  }
+
+  /* Vertical track */
+  .sponsors__track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2.2rem, 5vw, 3.8rem);
+    padding: 3.5rem 1rem;
+    animation: vertical-loop 30s linear infinite;
+    will-change: transform;
+  }
+
+  /* Logo containers (desktop default) */
+  .sponsors__logo {
+    width: min(480px, 90%);
+    height: clamp(100px, 14vw, 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 26px;
+  }
+
+  .sponsors__logo img {
+    max-width: 300%;
+    max-height: 300%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* 🔥 MOBILE: bigger logos */
+  @media (max-width: 640px) {
+    .sponsors__viewport {
+      height: 520px;
+    }
+
+    .sponsors__logo {
+      width: 95%;
+      height: 160px; /* bigger container */
+      padding: 20px 28px;
+    }
+
+    .sponsors__track {
+      gap: 3.5rem;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .sponsors__track {
+      animation: none;
+    }
+  }
+
+  /* Infinite vertical loop */
+  @keyframes vertical-loop {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+</style>
